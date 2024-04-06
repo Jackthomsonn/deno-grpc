@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  generate:user:type:
+    desc: Generate a user type
+    cmds:
+      - deno run --allow-read https://deno.land/x/grpc_basic@0.4.7/gen/dts.ts ./user.proto > ./user.d.ts
+  start:server:
+    desc: Start the server
+    cmds:
+      - deno run --allow-net --allow-read service-a/index.ts
+  get:user:
+    desc: Get a user
+    cmds:
+      - deno run --allow-net --allow-read service-b/index.ts
